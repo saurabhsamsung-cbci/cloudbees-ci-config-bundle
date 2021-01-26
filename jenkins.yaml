@@ -1,3 +1,6 @@
+notificationConfiguration:
+  enabled: true
+  router: "localOnlyFallback"
 cloudbees-pipeline-policies:
   config:
     policies:
@@ -8,7 +11,7 @@ cloudbees-pipeline-policies:
           maxTime: 30
 jenkins:
   authorizationStrategy: "cloudBeesRoleBasedAccessControl"
-  systemMessage: 'Jenkins configured using CloudBees CI CasC - v5'
+  systemMessage: 'Jenkins configured using CloudBees CI CasC - v6'
 unclassified:
   hibernationConfiguration:
     activities:
