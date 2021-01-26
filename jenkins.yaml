@@ -1,6 +1,14 @@
+cloudbees-pipeline-policies:
+  config:
+    policies:
+    - action: "fail"
+      name: "Timeout policy"
+      rules:
+      - entirePipelineTimeoutRule:
+          maxTime: 30
 jenkins:
   authorizationStrategy: "cloudBeesRoleBasedAccessControl"
-  systemMessage: 'Jenkins configured using CloudBees CI CasC - v2'
+  systemMessage: 'Jenkins configured using CloudBees CI CasC - v5'
 unclassified:
   hibernationConfiguration:
     activities:
@@ -55,8 +63,6 @@ kube:
           memory: false
           mountPath: "/var/maven/"
       yamlMergeStrategy: "override"
-groovy:
-  - url: https://raw.githubusercontent.com/saurabhsamsung-cbci/cloudbees-ci-config-bundle/master/groovy/create-pipeline-template-job.groovy
 credentials:
   system:
     domainCredentials:
@@ -73,3 +79,14 @@ credentials:
           id: "cloudbees-ci-workshop-github-app"
           owner: "saurabhsamsung-cbci"
           privateKey: "${gitHubAppPrivateKey}"
+cloudbees-slack-integration:
+  config:
+    slackToken: "${slackToken}"
+    slackWorkspace: "T010A455W77"
+    users:
+    - id: "saurabhsamsung"
+      jenkins: "saurabhsamsung"
+      optedIn: true
+      scmId: "saurabhsamsung"
+      slack: "REPLACE_USER_EMAIL"
+      slackWorkspace: "T010A455W77"
